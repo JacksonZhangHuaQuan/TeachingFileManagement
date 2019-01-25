@@ -18,10 +18,6 @@ public class Grade {
      */
     private String courseTitle;
     /**
-     * 附件
-     */
-    private String fileAttachment;
-    /**
      * 关联用户id
      */
     private Long userId;
@@ -29,11 +25,10 @@ public class Grade {
     public Grade() {
     }
 
-    public Grade(String semester, String teachClass, String courseTitle, String fileAttachment, Long userId) {
+    public Grade(String semester, String teachClass, String courseTitle, Long userId) {
         this.semester = semester;
         this.teachClass = teachClass;
         this.courseTitle = courseTitle;
-        this.fileAttachment = fileAttachment;
         this.userId = userId;
     }
 
@@ -67,14 +62,6 @@ public class Grade {
 
     public void setCourseTitle(String courseTitle) {
         this.courseTitle = courseTitle;
-    }
-
-    public String getFileAttachment() {
-        return fileAttachment;
-    }
-
-    public void setFileAttachment(String fileAttachment) {
-        this.fileAttachment = fileAttachment;
     }
 
     public Long getUserId() {

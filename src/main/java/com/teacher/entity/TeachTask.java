@@ -36,10 +36,6 @@ public class TeachTask {
      */
      private String courseType;
     /**
-     * 附件
-     */
-     private String fileAttachment;
-    /**
      * 关联用户id
      */
      private Long userId;
@@ -47,7 +43,7 @@ public class TeachTask {
     public TeachTask() {
     }
 
-    public TeachTask(String courseTitle, Date timeBegin, Date timeEnd, String location, Date classTime, Double credit, String courseType, String fileAttachment, Long userId) {
+    public TeachTask(String courseTitle, Date timeBegin, Date timeEnd, String location, Date classTime, Double credit, String courseType, Long userId) {
         this.courseTitle = courseTitle;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -55,7 +51,6 @@ public class TeachTask {
         this.classTime = classTime;
         this.credit = credit;
         this.courseType = courseType;
-        this.fileAttachment = fileAttachment;
         this.userId = userId;
     }
 
@@ -121,14 +116,6 @@ public class TeachTask {
 
     public void setCourseType(String courseType) {
         this.courseType = courseType;
-    }
-
-    public String getFileAttachment() {
-        return fileAttachment;
-    }
-
-    public void setFileAttachment(String fileAttachment) {
-        this.fileAttachment = fileAttachment;
     }
 
     public Long getUserId() {

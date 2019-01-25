@@ -8,11 +8,11 @@ public class User {
     /**
      * 用户名
      */
-    private String userName;
+    private String username;
     /**
      * 密码
      */
-    private String passWord;
+    private String password;
     /**
      * 用户类型 0普通用户 1管理员
      */
@@ -21,9 +21,9 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String passWord, Integer type) {
-        this.userName = userName;
-        this.passWord = passWord;
+    public User(String username,String password, Integer type) {
+        this.username = username;
+        this.password = password;
         this.type = type;
     }
 
@@ -35,20 +35,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getType() {

@@ -21,10 +21,7 @@ public class StudentWork {
      *课程名称
      */
     private String courseTitle;
-    /**
-     *附件
-     */
-    private String fileAttachment;
+
     /**
      *关联用户id
      */
@@ -33,12 +30,11 @@ public class StudentWork {
     public StudentWork() {
     }
 
-    public StudentWork(String workType, String semester, String className, String courseTitle, String fileAttachment, Long userId) {
+    public StudentWork(String workType, String semester, String className, String courseTitle, Long userId) {
         this.workType = workType;
         this.semester = semester;
         this.className = className;
         this.courseTitle = courseTitle;
-        this.fileAttachment = fileAttachment;
         this.userId = userId;
     }
 
@@ -80,14 +76,6 @@ public class StudentWork {
 
     public void setCourseTitle(String courseTitle) {
         this.courseTitle = courseTitle;
-    }
-
-    public String getFileAttachment() {
-        return fileAttachment;
-    }
-
-    public void setFileAttachment(String fileAttachment) {
-        this.fileAttachment = fileAttachment;
     }
 
     public Long getUserId() {

@@ -1,0 +1,83 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teacher.dao.UserInfoMapper">
+  <insert id="add" parameterType="UserInfo">
+      INSERT INTO sys_user_info
+      <trim prefix="(" suffixOverrides="," suffix=")">
+        <if test="jobNumber != null and jobNumber != ''">
+            job_number,
+        </if>
+        <if test="name != null and name != ''">
+            name,
+        </if>
+        <if test="gender != null and gender != ''">
+            gender,
+        </if>
+        <if test="birthday != null birthday != ''">
+            birthday,
+        </if>
+        <if test="nation != null and nation != ''">
+            nation,
+        </if>
+        <if test="mobilePhone != null and mobilePhone != ''">
+            mobile_phone,
+        </if>
+        <if test="email != null and email != ''">
+            email,
+        </if>
+        <if test="address != null and address != ''">
+            address,
+        </if>
+        <if test="userId != null and userId != ''">
+            user_id,
+        </if>
+      </trim>
+      <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+          <if test="jobNumber != null and jobNumber != ''">
+              #{jobNumber},
+          </if>
+          <if test="name != null and name != ''">
+              #{name},
+          </if>
+          <if test="gender != null and gender != ''">
+              #{gender},
+          </if>
+          <if test="birthday != null birthday != ''">
+              #{birthday},
+          </if>
+          <if test="nation != null and nation != ''">
+              #{nation},
+          </if>
+          <if test="mobilePhone != null and mobilePhone != ''">
+              #{mobilePhone},
+          </if>
+          <if test="email != null and email != ''">
+              #{email},
+          </if>
+          <if test="address != null and address != ''">
+              #{address},
+          </if>
+          <if test="userId != null and userId != ''">
+              #{userId},
+          </if>
+      </trim>
+  </insert>
+  <delete id="delete" parameterType="Long">
+      DELETE FROM sys_user_info WHERE id=#{id}
+  </delete>
+  <update id="update" parameterType="UserInfo">
+      UPDATE sys_user_info
+      SET job_number=#{jobNumber},name=#{name},gender=#{gender},birthday=#{birthday},
+          nation=#{nation},mobile_phone=#{mobilePhone},email=#{email},address=#{address}
+      WHERE id=#{id}
+  </update>
+  <select id="findById" resultType="UserInfo" parameterType="Long">
+      SELECT id,job_number,name,gender,birthday,nation,mobile_phone,email,address
+      FROM sys_user_info
+      WHERE id=#{id}
+  </select>
+    <select id="findByUserId" resultType="UserInfo" parameterType="Long">
+      SELECT id,job_number,name,gender,birthday,nation,mobile_phone,email,address
+      FROM sys_user_info
+      WHERE user_id=#{userId}
+    </select>
+</mapper>

@@ -1,6 +1,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teacher.dao.UserMapper">
-   <insert id="addUser" parameterType="User" >
-
+   <insert id="addNormalUser" parameterType="User" >
+      INSERT INTO sys_user (username,password) VALUES(#{userName},#{passWord})
    </insert>
+   <insert id="addSysAdmin" parameterType="User">
+      INSERT INTO sys_user (username,password,type) VALUES(#{userName},#{passWord},1)
+   </insert>
+   <delete id="delete" parameterType="Long">
+      DELETE FROM sys_user WHERE id=#{id}
+   </delete>
+   <update id="updatePassword" parameterType="User">
+      UPDATE sys_user SET `password`=#{passWord} WHERE id=#{id}
+   </update>
+   <select id="findById" resultType="User" parameterType="Long">
+      SELECT id,username,password,type FROM sys_user WHERE id=#{id}
+   </select>
+   <select id="findByUsername" resultType="User">
+      SELECT id,username,password,type FROM sys_user WHERE username=#{username}
+   </select>
+
 </mapper>

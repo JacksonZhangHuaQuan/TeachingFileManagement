@@ -21,10 +21,7 @@ public class Paper {
      *班级
      */
     private String className;
-    /**
-     *附件
-     */
-    private String fileAttachment;
+
     /**
      *关联用户id
      */
@@ -33,12 +30,11 @@ public class Paper {
     public Paper() {
     }
 
-    public Paper(String title, String paperType, String semester, String className, String fileAttachment, Long userId) {
+    public Paper(String title, String paperType, String semester, String className, Long userId) {
         this.title = title;
         this.paperType = paperType;
         this.semester = semester;
         this.className = className;
-        this.fileAttachment = fileAttachment;
         this.userId = userId;
     }
 
@@ -80,14 +76,6 @@ public class Paper {
 
     public void setClassName(String className) {
         this.className = className;
-    }
-
-    public String getFileAttachment() {
-        return fileAttachment;
-    }
-
-    public void setFileAttachment(String fileAttachment) {
-        this.fileAttachment = fileAttachment;
     }
 
     public Long getUserId() {
