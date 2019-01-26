@@ -1,7 +1,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teacher.dao.TeachTaskMapper">
 
-    <insert id="addTeachTask" parameterType="TeachTask">
-
+    <insert id="add" parameterType="TeachTask">
+        INSERT INTO teach_task
+                (course_title,time_begin,time_end,location,class_time,credit,course_type,user_id)
+        VALUES (#{courseTitle},#{timeBegin},#{timeEnd},#{location},#{classTime},#{credit},#{courseType},#{userId})
     </insert>
 </mapper>

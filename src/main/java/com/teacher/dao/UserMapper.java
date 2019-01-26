@@ -15,7 +15,7 @@ public interface UserMapper {
     /**
      * 增加管理员
      * @param user
-     * @return
+     * @return int
      */
     int addSysAdmin(User user);
     /**

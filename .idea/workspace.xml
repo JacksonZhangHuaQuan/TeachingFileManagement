@@ -6,25 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69966a3f-2d6f-4f4a-beb9-f552fd69bbc1" name="Default Changelist" comment="cycoding">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/GradeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/PaperMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/StudentWorkMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/GradeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/PaperMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/StudentWorkMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserInfoMapper.xml" afterDir="false" />
+    <list default="true" id="69966a3f-2d6f-4f4a-beb9-f552fd69bbc1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/entity/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/entity/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/entity/Paper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/entity/Paper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/entity/StudentWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/entity/StudentWork.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teacher/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teacher/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,16 +43,16 @@
     <session id="1567263383">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.7" value="5" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,7 +63,7 @@
           <entry key="fxml" value="1" />
           <entry key="handlers" value="3" />
           <entry key="iml" value="1" />
-          <entry key="java" value="40" />
+          <entry key="java" value="43" />
           <entry key="js" value="1" />
           <entry key="jsp" value="12" />
           <entry key="mybatisConfig" value="1" />
@@ -93,7 +80,7 @@
           <entry key="CSS" value="2" />
           <entry key="IDEA_MODULE" value="1" />
           <entry key="Image" value="3" />
-          <entry key="JAVA" value="40" />
+          <entry key="JAVA" value="43" />
           <entry key="JSP" value="12" />
           <entry key="JavaScript" value="1" />
           <entry key="Properties" value="9" />
@@ -104,45 +91,33 @@
         <counts>
           <entry key="css" value="110" />
           <entry key="dummy" value="1" />
-          <entry key="java" value="2648" />
+          <entry key="java" value="2653" />
           <entry key="jsp" value="575" />
           <entry key="propertise" value="29" />
           <entry key="txt" value="16" />
-          <entry key="xml" value="3025" />
+          <entry key="xml" value="3154" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="110" />
-          <entry key="JAVA" value="2648" />
+          <entry key="JAVA" value="2653" />
           <entry key="JSP" value="575" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="Properties" value="29" />
           <entry key="SQL" value="17" />
-          <entry key="XML" value="3008" />
+          <entry key="XML" value="3137" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/dao/GradeMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="161">
+              <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -181,11 +156,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/main/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/StudentWorkMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/PaperMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/GradeMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/sdsd.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/StudentWorkMapper.xml" />
@@ -193,11 +166,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/GradeMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserInfoMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/StudentWork.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/Paper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/Grade.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml" />
       </list>
     </option>
   </component>
@@ -239,7 +214,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -349,13 +323,14 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548432606505" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548506933765" />
     <property name="last_opened_file_path" value="F:/学习资料/电商演进/一期+二期资料/mmallv1.0/mmall" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -557,18 +532,26 @@
       <workItem from="1548242433043" duration="3219000" />
       <workItem from="1548252754692" duration="4670000" />
       <workItem from="1548328654790" duration="6223000" />
-      <workItem from="1548390273899" duration="14392000" />
+      <workItem from="1548390273899" duration="14467000" />
+      <workItem from="1548498509587" duration="1632000" />
     </task>
+    <task id="LOCAL-00001" summary="cycoding">
+      <created>1548432730814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1548432730814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89140000" />
+    <option name="totallyTimeSpent" value="90847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.34048256" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.34517425" />
       <window_info id="Structure" order="1" sideWeight="0.50141644" side_tool="true" weight="0.23391421" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -585,8 +568,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5033512" side_tool="true" weight="0.04822695" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" sideWeight="0.48793566" visible="true" weight="0.6028369" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5087131" side_tool="true" visible="true" weight="0.06241135" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" sideWeight="0.49128687" visible="true" weight="0.41702127" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49865952" weight="0.32765958" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.4966488" weight="0.07234043" />
@@ -787,9 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="44" column="26" lean-forward="true" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,9 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="44" column="32" lean-forward="true" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,35 +784,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-          <folding>
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#645#646#0" expanded="true" />
-            <element signature="e#693#694#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#768#769#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
-            <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#887#888#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#987#988#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sdsd.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/sdsd.fxml" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/GradeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -857,16 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/db.propertise">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -880,17 +822,6 @@
           <caret line="37" column="20" lean-forward="true" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2162">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
-          <folding>
-            <element signature="e#1210#1211#0" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -917,16 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
           <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -958,10 +879,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/dao/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        <state relative-caret-position="212">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/dao/TeachTaskMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -972,6 +906,58 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teacher/entity/TeachTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+          <folding>
+            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1142#1143#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1208#1209#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1342#1343#0" expanded="true" />
+            <element signature="e#1376#1377#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1456#1457#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1560#1561#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1677#1678#0" expanded="true" />
+            <element signature="e#1708#1709#0" expanded="true" />
+            <element signature="e#1756#1757#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1832#1833#0" expanded="true" />
+            <element signature="e#1864#1865#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1989#1990#0" expanded="true" />
+            <element signature="e#2018#2019#0" expanded="true" />
+            <element signature="e#2062#2063#0" expanded="true" />
+            <element signature="e#2098#2099#0" expanded="true" />
+            <element signature="e#2135#2136#0" expanded="true" />
+            <element signature="e#2168#2169#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2295#2296#0" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2366#2367#0" expanded="true" />
+            <element signature="e#2402#2403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeachTaskMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>

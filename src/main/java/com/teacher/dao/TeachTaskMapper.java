@@ -10,39 +10,39 @@ public interface TeachTaskMapper {
      * @param teachTask
      * @return int
      */
-    int addTeachTask(TeachTask teachTask);
+    int add(TeachTask teachTask);
 
     /**
      * 根据id删除教学任务
      * @param id
      * @return int
      */
-    int deleteTeachTaskById(Long id);
+    int delete(Long id);
 
     /**
      * 更新教学任务
      * @param teachTask
      * @return int
      */
-    int updateTeachTask(TeachTask teachTask);
+    int update(TeachTask teachTask);
 
     /**
      * 根据id查询教学任务
      * @param id
      * @return TeachTask
      */
-    TeachTask findTeachTaskById(Long id);
+    TeachTask findById(Long id);
 
     /**
      * 查询所有的教学任务
      * @return List<TeachTask>
      */
-    List<TeachTask> findAllTeachTask();
+    List<TeachTask> findAll();
 
     /**
      * 根据关联用户id查询其所有教学任务
      * @param id
      * @return List<TeachTask>
      */
-    List<TeachTask> findAllTeachTaskByUserId(Long id);
+    List<TeachTask> findAllByUserId(Long id);
 }

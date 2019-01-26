@@ -26,7 +26,7 @@ public class TeachTask {
     /**
      * 上课时间
      */
-     private Date classTime;
+     private String classTime;
     /**
      * 学分
      */
@@ -43,7 +43,7 @@ public class TeachTask {
     public TeachTask() {
     }
 
-    public TeachTask(String courseTitle, Date timeBegin, Date timeEnd, String location, Date classTime, Double credit, String courseType, Long userId) {
+    public TeachTask(String courseTitle, Date timeBegin, Date timeEnd, String location, String classTime, Double credit, String courseType, Long userId) {
         this.courseTitle = courseTitle;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
@@ -94,11 +94,11 @@ public class TeachTask {
         this.location = location;
     }
 
-    public Date getClassTime() {
+    public String getClassTime() {
         return classTime;
     }
 
-    public void setClassTime(Date classTime) {
+    public void setClassTime(String classTime) {
         this.classTime = classTime;
     }
 
