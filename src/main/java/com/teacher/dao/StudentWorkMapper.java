@@ -10,39 +10,39 @@ public interface StudentWorkMapper {
      * @param studentWork
      * @return int
      */
-    int addStudentWork(StudentWork studentWork);
+    int add(StudentWork studentWork);
 
     /**
      * 根据学生作业id删除学生相关作业
      * @param id
      * @return int
      */
-    int deleteStudentWorkById(Long id);
+    int delete(Long id);
 
     /**
      * 更新学生相关作业
      * @param studentWork
      * @return int
      */
-    int updateStudentWork(StudentWork studentWork);
+    int update(StudentWork studentWork);
 
     /**
      * 根据学生作业id查询学生相关作业
      * @param id
      * @return StudentWork
      */
-    StudentWork findStudentWorkById(Long id);
+    StudentWork findById(Long id);
 
     /**
      * 查询所有学生相关作业
      * @return List<StudentWork>
      */
-    List<StudentWork> findAllStudentWork();
+    List<StudentWork> findAll();
 
     /**
      * 根据关联用户id查询其所有学生相关作业
      * @param userId
      * @return List<StudentWork>
      */
-    List<StudentWork> findAllStudentWorkByUserId(Long userId);
+    List<StudentWork> findAllByUserId(Long userId);
 }

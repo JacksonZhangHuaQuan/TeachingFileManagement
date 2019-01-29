@@ -6,6 +6,10 @@ public class Grade {
      */
     private Long id;
     /**
+     * 学年
+     */
+    private String year;
+    /**
      * 学期时间
      */
     private String semester;
@@ -18,6 +22,10 @@ public class Grade {
      */
     private String courseTitle;
     /**
+     * 附件名称
+     */
+    private String fileName;
+    /**
      * 关联用户id
      */
     private Long userId;
@@ -25,10 +33,13 @@ public class Grade {
     public Grade() {
     }
 
-    public Grade(String semester, String teachClass, String courseTitle, Long userId) {
+    public Grade(Long id, String year, String semester, String teachClass, String courseTitle, String fileName, Long userId) {
+        this.id = id;
+        this.year = year;
         this.semester = semester;
         this.teachClass = teachClass;
         this.courseTitle = courseTitle;
+        this.fileName = fileName;
         this.userId = userId;
     }
 
@@ -70,5 +81,21 @@ public class Grade {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

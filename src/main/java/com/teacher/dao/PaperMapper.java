@@ -10,39 +10,39 @@ public interface PaperMapper {
      * @param paper
      * @return int
      */
-    int addPaper(Paper paper);
+    int add(Paper paper);
 
     /**
      * 根据id删除论文
      * @param id
      * @return int
      */
-    int deletePaperById(Long id);
+    int delete(Long id);
 
     /**
      * 更新论文
      * @param paper
      * @return int
      */
-    int updatePaper(Paper paper);
+    int update(Paper paper);
 
     /**
      * 根据论文id查找论文
      * @param id
      * @return Paper
      */
-    Paper findPaperById(Long id);
+    Paper findById(Long id);
 
     /**
      * 查询所有论文
      * @return List<Paper>
      */
-    List<Paper> findAllPaper();
+    List<Paper> findAll();
 
     /**
      * 根据关联用户id查询相关论文
      * @param userId
      * @return List<Paper>
      */
-    List<Paper> findAllPaperByUserId(Long userId);
+    List<Paper> findAllByUserId(Long userId);
 }

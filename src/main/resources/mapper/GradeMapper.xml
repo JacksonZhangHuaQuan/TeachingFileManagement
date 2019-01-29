@@ -1,4 +1,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teacher.dao.GradeMapper">
 
+    <insert id="add" parameterType="Grade">
+        INSERT INTO grade ( year,semester,teach_class,course_title,file_name,user_id)
+        VALUES (#{year},#{semester},#{teachClass},#{courseTitle},#{fileName},#{userId})
+    </insert>
+    <delete id="delete" parameterType="Long">
+        DELETE FROM grade
+        WHERE id=#{id}
+    </delete>
+    <update id="update" parameterType="Grade">
+        UPDATE grade
+        SET year=#{year},semester=#{semester},teach_class=#{teachClass},course_title=#{courseTitle},file_name=#{fileName}
+        WHERE id=#{id}
+    </update>
+    <select id="findById" parameterType="Long" resultType="Grade">
+        SELECT id,year,semester,teach_class,course_title,file_name,user_id
+        FROM grade
+        WHERE id=#{id}
+    </select>
+    <select id="findAll" resultType="Grade">
+        SELECT id,year,semester,teach_class,course_title,file_name,user_id
+        FROM grade
+    </select>
+    <select id="findAllByUserId" parameterType="Long" resultType="Grade">
+        SELECT id,year,semester,teach_class,course_title,file_name,user_id
+        FROM grade
+        WHERE user_id=#{userId}
+    </select>
 </mapper>

@@ -31,18 +31,18 @@ public interface GradeMapper {
      * @param id
      * @return Grade
      */
-    Grade findGrade(Long id);
+    Grade findById(Long id);
 
     /**
      * 查询所有成绩
      * @return
      */
-    List<Grade> findAllGrade();
+    List<Grade> findAll();
 
     /**
      * 根据关联用户id查询相关成绩
      * @param userId
      * @return
      */
-    List<Grade> findAllGrade(Long userId);
+    List<Grade> findAllByUserId(Long userId);
 }

@@ -10,6 +10,10 @@ public class StudentWork {
      */
     private String workType;
     /**
+     * 学年
+     */
+    private String year;
+    /**
      *学期时间
      */
     private String semester;
@@ -21,7 +25,10 @@ public class StudentWork {
      *课程名称
      */
     private String courseTitle;
-
+    /**
+     * 附件名称
+     */
+    private String fileName;
     /**
      *关联用户id
      */
@@ -30,11 +37,14 @@ public class StudentWork {
     public StudentWork() {
     }
 
-    public StudentWork(String workType, String semester, String className, String courseTitle, Long userId) {
+    public StudentWork(Long id, String workType, String year, String semester, String className, String courseTitle, String fileName, Long userId) {
+        this.id = id;
         this.workType = workType;
+        this.year = year;
         this.semester = semester;
         this.className = className;
         this.courseTitle = courseTitle;
+        this.fileName = fileName;
         this.userId = userId;
     }
 
@@ -84,5 +94,21 @@ public class StudentWork {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

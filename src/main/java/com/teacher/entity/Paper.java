@@ -14,6 +14,10 @@ public class Paper {
      */
     private String paperType;
     /**
+     * 学年
+     */
+    private String year;
+    /**
      *学期时间
      */
     private String semester;
@@ -21,7 +25,10 @@ public class Paper {
      *班级
      */
     private String className;
-
+    /**
+     * 附件名称
+     */
+    private String fileName;
     /**
      *关联用户id
      */
@@ -30,11 +37,14 @@ public class Paper {
     public Paper() {
     }
 
-    public Paper(String title, String paperType, String semester, String className, Long userId) {
+    public Paper(Long id, String title, String paperType, String year, String semester, String className, String fileName, Long userId) {
+        this.id = id;
         this.title = title;
         this.paperType = paperType;
+        this.year = year;
         this.semester = semester;
         this.className = className;
+        this.fileName = fileName;
         this.userId = userId;
     }
 
@@ -84,5 +94,21 @@ public class Paper {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
