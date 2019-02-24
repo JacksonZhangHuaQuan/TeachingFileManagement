@@ -1,6 +1,7 @@
 package com.teacher.dao;
 
 import com.teacher.entity.TeachTask;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,28 +11,28 @@ public interface TeachTaskMapper {
      * @param teachTask
      * @return int
      */
-    int add(TeachTask teachTask);
+    int add(@Param("teachTask") TeachTask teachTask);
 
     /**
      * 根据id删除教学任务
      * @param id
      * @return int
      */
-    int delete(Long id);
+    int delete(@Param("id") Long id);
 
     /**
      * 更新教学任务
      * @param teachTask
      * @return int
      */
-    int update(TeachTask teachTask);
+    int update(@Param("teachTask") TeachTask teachTask);
 
     /**
      * 根据id查询教学任务
      * @param id
      * @return TeachTask
      */
-    TeachTask findById(Long id);
+    TeachTask findById(@Param("id") Long id);
 
     /**
      * 查询所有的教学任务
@@ -40,9 +41,16 @@ public interface TeachTaskMapper {
     List<TeachTask> findAll();
 
     /**
-     * 根据关联用户id查询其所有教学任务
-     * @param id
-     * @return List<TeachTask>
+     * 本学期教学任务
+     * @param userId
+     * @return
      */
-    List<TeachTask> findAllByUserId(Long id);
+    List<TeachTask> findNow(@Param("userId") Long userId);
+
+    /**
+     * 历史教学任务
+     * @param userId
+     * @return
+     */
+    List<TeachTask> findHistory(@Param("userId") Long userId);
 }

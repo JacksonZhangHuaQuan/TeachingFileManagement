@@ -1,6 +1,7 @@
 package com.teacher.dao;
 
 import com.teacher.entity.Paper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,28 +11,28 @@ public interface PaperMapper {
      * @param paper
      * @return int
      */
-    int add(Paper paper);
+    int add(@Param("paper") Paper paper);
 
     /**
      * 根据id删除论文
      * @param id
      * @return int
      */
-    int delete(Long id);
+    int delete(@Param("id") Long id);
 
     /**
      * 更新论文
      * @param paper
      * @return int
      */
-    int update(Paper paper);
+    int update(@Param("paper") Paper paper);
 
     /**
      * 根据论文id查找论文
      * @param id
      * @return Paper
      */
-    Paper findById(Long id);
+    Paper findById(@Param("id") Long id);
 
     /**
      * 查询所有论文
@@ -40,9 +41,9 @@ public interface PaperMapper {
     List<Paper> findAll();
 
     /**
-     * 根据关联用户id查询相关论文
-     * @param userId
-     * @return List<Paper>
+     * 根据关联用户id及动态条件查询相关论文
+     * @param paper
+     * @return
      */
-    List<Paper> findAllByUserId(Long userId);
+    List<Paper> findByCondition(@Param("paper") Paper paper);
 }

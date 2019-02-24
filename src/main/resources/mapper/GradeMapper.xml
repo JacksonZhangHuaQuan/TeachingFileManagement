@@ -23,9 +23,22 @@
         SELECT id,year,semester,teach_class,course_title,file_name,user_id
         FROM grade
     </select>
-    <select id="findAllByUserId" parameterType="Long" resultType="Grade">
+    <select id="findByCondition" parameterType="Grade" resultType="Grade">
         SELECT id,year,semester,teach_class,course_title,file_name,user_id
         FROM grade
         WHERE user_id=#{userId}
+        <if test="year != null and year != ''">
+        and year = #{year}
+        </if>
+        <if test="semester != null and semester != ''">
+            and semester = #{semester}
+        </if>
+        <if test="teachClass != null and teachClass != ''">
+            and teachClass = #{teachClass}
+        </if>
+        <if test="courseTitle != null and courseTitle != ''">
+            and courseTitle = #{courseTitle}
+        </if>
     </select>
+
 </mapper>

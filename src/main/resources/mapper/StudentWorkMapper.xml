@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teacher.dao.StudentWorkMapper">
-
+     <sql id="Base">id,work_type,year,semester,class_name,course_title,file_name,user_id</sql>
     <insert id="add" parameterType="StudentWork">
         INSERT INTO student_work (work_type,year,semester,class_name,course_title,file_name,user_id)
         VALUES (#{workType},#{year},#{semester},#{className},#{courseTitle},#{fileName},#{userId})
@@ -11,22 +11,34 @@
     </delete>
     <update id="update" parameterType="StudentWork">
         UPDATE student_work
-        SET work_type=#{workType},semester=#{semester},
+        SET work_type=#{workType},year=#{year},semester=#{semester},
             class_name=#{className},course_title=#{courseTitle},file_name=#{fileName}
         WHERE id=#{id}
     </update>
     <select id="findById" parameterType="Long" resultType="StudentWork">
-        SELECT work_type,semester,class_name,course_title,file_name,user_id
+        SELECT <include refid="Base"/>
         FROM student_work
         WHERE id=#{id}
     </select>
     <select id="findAll" resultType="StudentWork">
-        SELECT work_type,semester,class_name,course_title,file_name,user_id
+        SELECT <include refid="Base"/>
         FROM student_work
     </select>
-    <select id="findAllByUserId" parameterType="Long" resultType="StudentWork">
-        SELECT work_type,semester,class_name,course_title,file_name,user_id
+    <select id="findByCondition" parameterType="StudentWork" resultType="StudentWork">
+        SELECT <include refid="Base"/>
         FROM student_work
         WHERE user_id=#{userId}
+        <if test=" workType != null and workType != '' ">
+        and work_type=#{workType}
+        </if>
+        <if test=" year != null and year != '' ">
+        and year=#{year}
+        </if>
+        <if test=" semester != null and semester != '' ">
+        and semester=#{semester}
+        </if>
+        <if test=" className != null and className != '' ">
+        and class_name=#{class_name}
+        </if>
     </select>
 </mapper>

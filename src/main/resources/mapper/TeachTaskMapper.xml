@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teacher.dao.TeachTaskMapper">
-
+    <sql id="Base">id,course_title,time_begin,time_end,location,class_time,credit,course_type,file_name,user_id</sql>
     <insert id="add" parameterType="TeachTask">
         INSERT INTO teach_task
                 (course_title,time_begin,time_end,location,class_time,credit,course_type,file_name,user_id)
@@ -16,17 +16,24 @@
         WHERE id=#{id}
     </update>
     <select id="findById" parameterType="Long" resultType="TeachTask">
-        SELECT id,course_title,time_begin,time_end,location,class_time,credit,course_type,file_name,user_id
+        SELECT <include refid="Base"/>
         FROM teach_task
         WHERE id=#{id}
     </select>
     <select id="findAll" resultType="TeachTask">
-        SELECT id,course_title,time_begin,time_end,location,class_time,credit,course_type,file_name,user_id
+        SELECT <include refid="Base"/>
         FROM teach_task
     </select>
-    <select id="findAllByUserId" parameterType="Long" resultType="TeachTask">
-        SELECT id,course_title,time_begin,time_end,location,class_time,credit,course_type,file_name,user_id
+    <select id="findNow" parameterType="Long" resultType="TeachTask">
+        SELECT <include refid="Base"/>
         FROM teach_task
         WHERE user_id=#{userId}
+        AND time_begin &lt; now() AND time_end &gt; now()
+    </select>
+    <select id="findHistory" parameterType="Long" resultType="TeachTask">
+        SELECT <include refid="Base"/>
+        FROM teach_task
+        WHERE user_id=#{userId}
+        AND (time_begin &gt; now() OR time_end &lt; now())
     </select>
 </mapper>

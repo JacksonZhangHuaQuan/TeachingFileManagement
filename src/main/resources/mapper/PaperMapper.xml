@@ -23,9 +23,21 @@
         SELECT id,title,paper_type,year,semester,class_name,file_name,user_id
         FROM paper
     </select>
-    <select id="findAllByUserId" parameterType="Long" resultType="Paper">
+    <select id="findByCondition" parameterType="Paper" resultType="Paper">
         SELECT id,title,paper_type,year,semester,class_name,file_name,user_id
         FROM paper
         WHERE user_id=#{userId}
+        <if test=" paperType != null and paperType != '' ">
+        and paper_type=#{paperType}
+        </if>
+        <if test=" year != null and year != '' ">
+        and year=#{year}
+        </if>
+        <if test=" semester != null and semester != '' ">
+        and semester=#{semester}
+        </if>
+        <if test=" class_name != null and class_name != '' ">
+        and class_name=#{className}
+        </if>
     </select>
 </mapper>

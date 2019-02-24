@@ -1,6 +1,7 @@
 package com.teacher.dao;
 
 import com.teacher.entity.UserInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,27 +11,27 @@ public interface UserInfoMapper {
      * @param userInfo
      * @return int
      */
-    int add( UserInfo userInfo);
+    int add(@Param("userInfo") UserInfo userInfo);
 
     /**
      * 根据id删除用户信息
      * @param id
      * @return int
      */
-    int delete(Long id);
+    int delete(@Param("id") Long id);
     /**
      * 更新用户信息
      * @param userInfo
      * @return int
      */
-    int update(UserInfo userInfo);
+    int update(@Param("userInfo") UserInfo userInfo);
 
     /**
      * 根据id查询用户信息
      * @param id
      * @return UserInfo
      */
-    UserInfo findById(Long id);
+    UserInfo findById(@Param("id") Long id);
 
 
     /**
@@ -38,5 +39,5 @@ public interface UserInfoMapper {
      * @param userId
      * @return UserInfo
      */
-    UserInfo findByUserId(Long userId);
+    UserInfo findByUserId(@Param("userId") Long userId);
 }
