@@ -11,7 +11,7 @@ public interface PaperMapper {
      * @param paper
      * @return int
      */
-    int add(@Param("paper") Paper paper);
+    int add( Paper paper);
 
     /**
      * 根据id删除论文
@@ -25,7 +25,7 @@ public interface PaperMapper {
      * @param paper
      * @return int
      */
-    int update(@Param("paper") Paper paper);
+    int update( Paper paper);
 
     /**
      * 根据论文id查找论文
@@ -45,5 +45,5 @@ public interface PaperMapper {
      * @param paper
      * @return
      */
-    List<Paper> findByCondition(@Param("paper") Paper paper);
+    List<Paper> findByCondition( Paper paper);
 }

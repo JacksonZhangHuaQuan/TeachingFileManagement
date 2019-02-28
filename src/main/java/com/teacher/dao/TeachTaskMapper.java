@@ -11,7 +11,7 @@ public interface TeachTaskMapper {
      * @param teachTask
      * @return int
      */
-    int add(@Param("teachTask") TeachTask teachTask);
+    int add( TeachTask teachTask);
 
     /**
      * 根据id删除教学任务
@@ -25,7 +25,7 @@ public interface TeachTaskMapper {
      * @param teachTask
      * @return int
      */
-    int update(@Param("teachTask") TeachTask teachTask);
+    int update( TeachTask teachTask);
 
     /**
      * 根据id查询教学任务

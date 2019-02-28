@@ -11,7 +11,7 @@ public interface StudentWorkMapper {
      * @param studentWork
      * @return int
      */
-    int add(@Param("studentWork") StudentWork studentWork);
+    int add( StudentWork studentWork);
 
     /**
      * 根据学生作业id删除学生相关作业
@@ -25,7 +25,7 @@ public interface StudentWorkMapper {
      * @param studentWork
      * @return int
      */
-    int update(@Param("studentWork") StudentWork studentWork);
+    int update( StudentWork studentWork);
 
     /**
      * 根据学生作业id查询学生相关作业
@@ -45,5 +45,5 @@ public interface StudentWorkMapper {
      * @param studentWork
      * @return
      */
-    List<StudentWork> findByCondition(@Param("studentWork") StudentWork studentWork);
+    List<StudentWork> findByCondition( StudentWork studentWork);
 }

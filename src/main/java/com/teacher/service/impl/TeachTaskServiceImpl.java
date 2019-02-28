@@ -17,6 +17,9 @@ public class TeachTaskServiceImpl implements TeachTaskService {
     TeachTaskMapper teachTaskMapper;
     @Override
     public ServerResponse add(TeachTask teachTask) {
+        if (teachTask.getFileName() == null ){
+            teachTask.setFileName("");
+        }
         int num = teachTaskMapper.add(teachTask);
         if ( num > 0 ){
             return ServerResponse.createSuccessMessage("添加成功！");

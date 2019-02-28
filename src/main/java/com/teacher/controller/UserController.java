@@ -26,15 +26,14 @@ public class UserController {
      * @return
      */
     @PostMapping("/login")
-    @ResponseBody
-    public ServerResponse<User> login(@RequestBody User user,HttpSession httpSession){
+    public String login( User user,HttpSession httpSession){
          ServerResponse<User> serverResponse = userService.login(user);
          if (serverResponse.isSuccess()){
              httpSession.setAttribute(Const.CURRENT_INFO,userService.findInfoByUserId(serverResponse.getData().getId()).getData());
              httpSession.setAttribute(Const.CURRENT_USER,serverResponse.getData());
-             return serverResponse;
+             return "main/index";
          }
-         return serverResponse;
+         return "main/error";
     }
 
     /**
@@ -45,7 +44,10 @@ public class UserController {
     @PostMapping("/register")
     @ResponseBody
     public ServerResponse register(@RequestBody User user){
-        return userService.register(user);
+        if( Const.UserType.TYPE_ADMIN == user.getType()){
+            return userService.register(user);
+        }
+        return ServerResponse.createError("无权限！");
     }
 
 }

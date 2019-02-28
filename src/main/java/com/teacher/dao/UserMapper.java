@@ -11,14 +11,14 @@ public interface UserMapper {
      * @param user
      * @return int
      */
-    int addNormalUser(@Param("user") User user);
+    int addNormalUser( User user);
 
     /**
      * 增加管理员
      * @param user
      * @return int
      */
-    int addSysAdmin(@Param("user") User user);
+    int addSysAdmin( User user);
     /**
      * 删除用户
      * @param id
@@ -30,7 +30,7 @@ public interface UserMapper {
      * @param user
      * @return int
      */
-    int updatePassword(@Param("user") User user);
+    int updatePassword( User user);
     /**
      * 根据id查询用户
      * @param id
@@ -44,6 +44,6 @@ public interface UserMapper {
      * @return User
      */
     User findByUsername(@Param("username") String username);
-    User selectLogin(@Param("user") User user);
+    User selectLogin( User user);
 
 }

@@ -11,7 +11,7 @@ public interface UserInfoMapper {
      * @param userInfo
      * @return int
      */
-    int add(@Param("userInfo") UserInfo userInfo);
+    int add( UserInfo userInfo);
 
     /**
      * 根据id删除用户信息
@@ -24,7 +24,7 @@ public interface UserInfoMapper {
      * @param userInfo
      * @return int
      */
-    int update(@Param("userInfo") UserInfo userInfo);
+    int update( UserInfo userInfo);
 
     /**
      * 根据id查询用户信息

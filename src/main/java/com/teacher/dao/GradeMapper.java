@@ -11,7 +11,7 @@ public interface GradeMapper {
      * @param grade
      * @return int
      */
-    int add(@Param("grade") Grade grade);
+    int add( Grade grade);
 
     /**
      * 根据id删除成绩
@@ -25,7 +25,7 @@ public interface GradeMapper {
      * @param grade
      * @return int
      */
-    int update(@Param("grade") Grade grade);
+    int update( Grade grade);
 
     /**
      * 根据id查询成绩
@@ -45,6 +45,6 @@ public interface GradeMapper {
      * @param grade
      * @return
      */
-    List<Grade> findByCondition(@Param("grade") Grade grade);
+    List<Grade> findByCondition( Grade grade);
 
 }
