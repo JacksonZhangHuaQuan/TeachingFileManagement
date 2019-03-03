@@ -25,16 +25,16 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String path = request.getRequestURI();
+        User currentUser = (User) request.getSession().getAttribute(Const.CURRENT_USER);
+        if (currentUser != null){
+            filterChain.doFilter(request,response);
+            return;
+        }
         if (list != null && list.contains(path)){
             filterChain.doFilter(request,response);
             return;
         }
-        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg") || path.endsWith(".png") || path.endsWith(".otf") || path.endsWith(".eot") || path.endsWith(".svg") || path.endsWith(".ttf") || path.endsWith(".woff")){
-            filterChain.doFilter(request,response);
-            return;
-        }
-        User currentUser = (User) request.getSession().getAttribute(Const.CURRENT_USER);
-        if (currentUser != null){
+        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith(".jpg") || path.endsWith(".png") || path.endsWith(".otf") || path.endsWith(".eot") || path.endsWith(".svg") || path.endsWith(".ttf") || path.endsWith(".woff") || path.endsWith(".gif")){
             filterChain.doFilter(request,response);
             return;
         }

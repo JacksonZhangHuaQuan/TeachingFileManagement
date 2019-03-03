@@ -39,7 +39,7 @@
 
         <div class="header-right">
 
-            <a href="login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+            <a href="../login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
         </div>
     </nav>
@@ -60,16 +60,16 @@
 
 
                 <li>
-                    <a  href="index.jsp"><i class="fa fa-dashboard "></i>个人信息</a>
+                    <a  href="${ctx}/jsp/main/index.jsp"><i class="fa fa-dashboard "></i>个人信息</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-desktop "></i>教学任务<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse in">
                         <li>
-                            <a href="new_teachtask.jsp" class="active-menu"><i class="fa fa-toggle-on"></i>本学期教学任务</a>
+                            <a href="${ctx}/jsp/main/new_teachtask.jsp" class="active-menu"><i class="fa fa-toggle-on"></i>本学期教学任务</a>
                         </li>
                         <li>
-                            <a href="history_teachtask.jsp"><i class="fa fa-bell "></i>历史教学任务</a>
+                            <a href="${ctx}/jsp/main/history_teachtask.jsp"><i class="fa fa-bell "></i>历史教学任务</a>
                         </li>
                     </ul>
                 </li>
@@ -77,22 +77,22 @@
                     <a href="#"><i class="fa fa-yelp "></i>成绩管理<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="grade_add.jsp"><i class="fa fa-coffee"></i>录入成绩</a>
+                            <a href="${ctx}/jsp/main/grade_add.jsp"><i class="fa fa-coffee"></i>录入成绩</a>
                         </li>
                         <li>
-                            <a href="grade_find.jsp"><i class="fa fa-flash "></i>成绩查询</a>
+                            <a href="${ctx}/jsp/main/grade_find.jsp"><i class="fa fa-flash "></i>成绩查询</a>
                         </li>
 
                     </ul>
                 </li>
                 <li>
-                    <a href="table.jsp"><i class="fa fa-flash "></i>论文管理<span class="fa arrow"></span> </a>
+                    <a href="#"><i class="fa fa-flash "></i>论文管理<span class="fa arrow"></span> </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="paper_add.jsp"><i class="fa fa-toggle-on"></i>上传论文</a>
+                            <a href="${ctx}/jsp/main/paper_add.jsp"><i class="fa fa-toggle-on"></i>上传论文</a>
                         </li>
                         <li>
-                            <a href="paper_find.jsp"><i class="fa fa-bell "></i>论文查询</a>
+                            <a href="${ctx}/jsp/main/paper_find.jsp"><i class="fa fa-bell "></i>论文查询</a>
                         </li>
                     </ul>
                 </li>
@@ -101,10 +101,10 @@
                     <ul class="nav nav-second-level">
 
                         <li>
-                            <a href="work_add.jsp"><i class="fa fa-desktop "></i>作业、实验上传</a>
+                            <a href="${ctx}/jsp/main/work_add.jsp"><i class="fa fa-desktop "></i>作业、实验上传</a>
                         </li>
                         <li>
-                            <a href="work_find.jsp"><i class="fa fa-code "></i>作业、实验查询</a>
+                            <a href="${ctx}/jsp/main/work_find.jsp"><i class="fa fa-code "></i>作业、实验查询</a>
                         </li>
 
 
@@ -194,13 +194,15 @@
                     var str="<tr>";
                     str+="<td>"+data.id+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
+                    data.timeBegin= timestampToTime(data.timeBegin);
                     str+="<td>"+data.timeBegin+"</td>";
+                    data.timeEnd= timestampToTime(data.timeEnd);
                     str+="<td>"+data.timeEnd+"</td>";
                     str+="<td>"+data.location+"</td>";
                     str+="<td>"+data.classTime+"</td>";
                     str+="<td>"+data.credit+"</td>";
                     str+="<td>"+data.courseType+"</td>";
-                    str+="<td>"+data.fileName+"</td>";
+                    str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -227,13 +229,15 @@
                     var str="<tr>";
                     str+="<td>"+data.id+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
+                    data.timeBegin= timestampToTime(data.timeBegin);
                     str+="<td>"+data.timeBegin+"</td>";
+                    data.timeEnd= timestampToTime(data.timeEnd);
                     str+="<td>"+data.timeEnd+"</td>";
                     str+="<td>"+data.location+"</td>";
                     str+="<td>"+data.classTime+"</td>";
                     str+="<td>"+data.credit+"</td>";
                     str+="<td>"+data.courseType+"</td>";
-                    str+="<td>"+data.fileName+"</td>";
+                    str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -262,13 +266,15 @@
                     var str="<tr>";
                     str+="<td>"+data.id+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
+                    data.timeBegin= timestampToTime(data.timeBegin);
                     str+="<td>"+data.timeBegin+"</td>";
+                    data.timeEnd = timestampToTime(data.timeEnd);
                     str+="<td>"+data.timeEnd+"</td>";
                     str+="<td>"+data.location+"</td>";
                     str+="<td>"+data.classTime+"</td>";
                     str+="<td>"+data.credit+"</td>";
                     str+="<td>"+data.courseType+"</td>";
-                    str+="<td>"+data.fileName+"</td>";
+                    str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -283,6 +289,18 @@
             }
         });
     })
+
+
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + '-';
+        var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var D = date.getDate() + ' ';
+        var h = date.getHours() + ':';
+        var m = date.getMinutes() + ':';
+        var s = date.getSeconds();
+        return Y + M + D;
+    }
 
 </script>
 

@@ -1,5 +1,6 @@
 package com.teacher.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.teacher.common.Const;
 import com.teacher.common.ServerResponse;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -21,8 +24,7 @@ public class GradeController {
     GradeService gradeService;
 
     @PostMapping("/grade")
-    @ResponseBody
-    public ServerResponse add(Grade grade, @RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session){
+    public String add(Grade grade, @RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session, HttpServletRequest request, HttpServletResponse response){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         grade.setUserId(user.getId());
         if (uploadFile.getSize() > 0 ) {
@@ -39,18 +41,24 @@ public class GradeController {
             try {
                 uploadFile.transferTo(file);
                 grade.setFileName(filename);
-                return gradeService.add(grade);
+                String json = JSON.toJSONString(gradeService.add(grade));
+                request.setAttribute("serverResponse",json);
+                return "main/grade_add";
             } catch (IOException e) {
                 e.printStackTrace();
-                return ServerResponse.createError("提交失败！");
+                String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                request.setAttribute("serverResponse",json);
+                return "main/grade_add";
             }
         }
-        return gradeService.add(grade);
+        String json = JSON.toJSONString(gradeService.add(grade));
+        request.setAttribute("serverResponse",json);
+        return "main/grade_add";
     }
 
     @DeleteMapping("/grade/{id}")
     @ResponseBody
-    public ServerResponse delete(@PathVariable("id") Long id,HttpSession session){
+    public ServerResponse delete(@PathVariable("id") Long id, HttpSession session, HttpServletRequest request){
         ServerResponse serverResponse = gradeService.delete(id);
         if (serverResponse.isSuccess()){
              String fileName = gradeService.findById(id).getData().getFileName();
@@ -58,6 +66,7 @@ public class GradeController {
              File file = new File(targetFile);
              file.delete();
         }
+
         return serverResponse;
     }
 

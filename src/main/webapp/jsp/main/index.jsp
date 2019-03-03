@@ -60,7 +60,7 @@
 
 
                 <li>
-                    <a class="active-menu" href="index.jsp"><i class="fa fa-dashboard "></i>个人信息</a>
+                    <a class="active-menu" href="${ctx}/jsp/main/index.jsp"><i class="fa fa-dashboard "></i>个人信息</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-desktop "></i>教学任务<span class="fa arrow"></span></a>
