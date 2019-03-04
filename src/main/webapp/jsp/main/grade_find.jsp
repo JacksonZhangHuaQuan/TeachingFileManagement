@@ -21,6 +21,8 @@
     <link href="${ctx}/assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="${ctx}/assets/css/custom.css" rel="stylesheet" />
+    <!--弹出层-->
+    <link href="${ctx}/assets/css/xcConfirm.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -39,7 +41,7 @@
 
         <div class="header-right">
 
-            <a href="../login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+            <a href="${ctx}/jsp/login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
         </div>
     </nav>
@@ -49,7 +51,7 @@
             <ul class="nav" id="main-menu">
                 <li>
                     <div class="user-img-div">
-                        <img src="${ctx}/assets/img/user.png" class="img-thumbnail" />
+                        <img src="${ctx}/assets/img/njsjdx.jpg" class="img-thumbnail" />
 
                         <div class="inner-text">
                             ${currentInfo.name}
@@ -135,6 +137,7 @@
                                     <th>教学班级</th>
                                     <th>课程名称</th>
                                     <th>附件</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -173,12 +176,33 @@
 <script src="${ctx}/assets/js/jquery.metisMenu.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="${ctx}/assets/js/custom.js"></script>
+<!-- 弹出层 -->
+<script src="${ctx}/assets/js/xcConfirm.js"></script>
 <script>
     var pageNum=1;
     var nextPageNum=2;
     var lastPage=1;
     var id = ${currentUser.id};
     var dataJson = {userId:id};
+    function deleted(id){
+       var staus = confirm("确定删除？");
+       if (!staus){
+           return false;
+       }
+       $.ajax({
+           type:"post",
+           url:'${ctx}/gradedelete/'+id,
+           async:false,
+           dataType:"json",
+           success: function (result) {
+             location.href = '${ctx}/jsp/main/grade_find.jsp';
+           },
+           error:function (result) {
+            console.log(result);
+           }
+       })
+
+    }
     $(function (){
         $.ajax({
             type:"post",
@@ -197,6 +221,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -228,6 +253,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -261,6 +287,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });

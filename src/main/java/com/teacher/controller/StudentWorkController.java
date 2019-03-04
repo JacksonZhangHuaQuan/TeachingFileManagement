@@ -1,13 +1,23 @@
 package com.teacher.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.teacher.common.Const;
 import com.teacher.common.ServerResponse;
+import com.teacher.entity.Paper;
 import com.teacher.entity.StudentWork;
+import com.teacher.entity.User;
 import com.teacher.service.StudentWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,9 +31,40 @@ public class StudentWorkController {
      * @return
      */
     @PostMapping("/studentwork")
-    @ResponseBody
-    public ServerResponse add(@RequestBody StudentWork studentWork){
-        return studentWorkService.add(studentWork);
+
+    public String add(StudentWork studentWork, @RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        studentWork.setUserId(user.getId());
+        if (studentWork.getFileName() == null){
+            studentWork.setFileName("");
+        }
+        if (uploadFile.getSize() > 0 ) {
+            String filename = uploadFile.getOriginalFilename();
+            String leftPath = session.getServletContext().getRealPath("/file");
+            File path =new File(leftPath);
+            if ( !path.exists() && path.isAbsolute() ){
+                path.mkdir();
+            }
+            File file = new File(leftPath, filename);
+            if ( file.exists() ){
+                file.delete();
+            }
+            try {
+                uploadFile.transferTo(file);
+                studentWork.setFileName(filename);
+                String json = JSON.toJSONString(studentWorkService.add(studentWork));
+                request.setAttribute("serverResponse",json);
+                return "main/work_add";
+            } catch (IOException e) {
+                e.printStackTrace();
+                String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                request.setAttribute("serverResponse",json);
+                return "main/work_add";
+            }
+        }
+        String json = JSON.toJSONString(studentWorkService.add(studentWork));
+        request.setAttribute("serverResponse",json);
+        return "main/work_add";
     }
 
     /**

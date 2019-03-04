@@ -133,14 +133,14 @@
                                 </button>
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
                                     <div class="modal-dialog">
-                                        <div class="modal-content" style="width: 1000px;  height:525px; margin-left: -30%;">
+                                        <div class="modal-content" style="width: 1000px;  height:500px; margin-left: -30%;">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                 <h4 class="modal-title" id="myModalLabel">个人信息修改</h4>
                                             </div>
 
                                             <div class="modal-body">
-                                <form role="form" id="info" action="${ctx}/userinfo" method="POST">
+                                <form role="form" id="info" action="${ctx}/userinfo" method="post">
                                             <input name="id" type="hidden" value="${currentInfo.id}" />
                                             <input name="jobNumber" type="hidden" value="${currentInfo.jobNumber}" />
                                             <input name="userId" type="hidden" value="${currentUser.id}" />
@@ -159,7 +159,6 @@
                                             <div class="form-group col-md-6">
                                                 <label>生日</label>
                                                 <input name="birthday" class="form-control" type="date" style="width: 400px;" value="${currentInfo.birthday}">
-                                                <p class="help-block">格式如：1997-10-08</p>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>地址</label>

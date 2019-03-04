@@ -43,7 +43,7 @@
 
         <div class="header-right">
 
-            <a href="../login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+            <a href="${ctx}/jsp/login.jsp" class="btn btn-danger" title="退出"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
         </div>
     </nav>
@@ -53,7 +53,7 @@
             <ul class="nav" id="main-menu">
                 <li>
                     <div class="user-img-div">
-                        <img src="${ctx}/assets/img/user.png" class="img-thumbnail" />
+                        <img src="${ctx}/assets/img/njsjdx.jpg" class="img-thumbnail" />
 
                         <div class="inner-text">
                             ${currentInfo.name}
@@ -130,7 +130,7 @@
                         上传论文
                     </div>
                     <div class="panel-body">
-                        <form role="form" enctype="multipart/form-data" action="/paper" method="post">
+                        <form role="form" enctype="multipart/form-data" action="/studentwork" method="post">
 
                             <div class="form-group">
                                 <label>类型</label>

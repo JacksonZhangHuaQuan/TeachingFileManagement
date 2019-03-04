@@ -27,6 +27,9 @@ public class GradeController {
     public String add(Grade grade, @RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session, HttpServletRequest request, HttpServletResponse response){
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         grade.setUserId(user.getId());
+        if (grade.getFileName() == null){
+            grade.setFileName("");
+        }
         if (uploadFile.getSize() > 0 ) {
             String filename = uploadFile.getOriginalFilename();
             String leftPath = session.getServletContext().getRealPath("/file");
@@ -56,12 +59,12 @@ public class GradeController {
         return "main/grade_add";
     }
 
-    @DeleteMapping("/grade/{id}")
+    @PostMapping("/gradedelete/{id}")
     @ResponseBody
     public ServerResponse delete(@PathVariable("id") Long id, HttpSession session, HttpServletRequest request){
+        String fileName = gradeService.findById(id).getData().getFileName();
         ServerResponse serverResponse = gradeService.delete(id);
         if (serverResponse.isSuccess()){
-             String fileName = gradeService.findById(id).getData().getFileName();
              String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
              File file = new File(targetFile);
              file.delete();

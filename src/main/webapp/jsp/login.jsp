@@ -13,10 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>教师教学档案管理系统</title>
 
-    <!-- BOOTSTRAP STYLES-->
+    < <!-- BOOTSTRAP STYLES-->
     <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="${ctx}/assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="${ctx}/assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="${ctx}/assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
@@ -57,6 +61,32 @@
 
     </div>
 </div>
+<script src="${ctx}/assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="${ctx}/assets/js/bootstrap.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="${ctx}/assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="${ctx}/assets/js/custom.js"></script>
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="${ctx}/assets/js/bootstrap-fileupload.js"></script>
+<!-- 弹出层 -->
+<script src="${ctx}/assets/js/xcConfirm.js"></script>
+
+<script>
+    var server = ${serverResponse};
+    $(function () {
+        if (server.success === true ){
+            var txt= server.message;
+            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);
+            console.log(server);
+        }
+        if (server.success === false){
+            var txt= server.message;
+            alert(txt);
+        }
+    })
+</script>
 
 </body>
 </html>
