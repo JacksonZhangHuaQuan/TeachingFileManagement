@@ -64,19 +64,23 @@ public class GradeController {
     public ServerResponse delete(@PathVariable("id") Long id, HttpSession session, HttpServletRequest request){
         String fileName = gradeService.findById(id).getData().getFileName();
         ServerResponse serverResponse = gradeService.delete(id);
+        //重复代码可改为方法
         if (serverResponse.isSuccess()){
-             String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
-             File file = new File(targetFile);
-             file.delete();
+            if (fileName != ""){
+                String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
+                File file = new File(targetFile);
+                file.delete();
+            }
         }
 
         return serverResponse;
     }
 
-    @PutMapping("/grade")
-    @ResponseBody
-    public ServerResponse update( Grade grade,@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session){
-
+    @PostMapping("/gradeupdate")
+    public String update( Grade grade,@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session,HttpServletRequest request){
+            if (grade.getFileName() == null){
+                grade.setFileName("");
+            }
             if (uploadFile.getSize() > 0 ) {
                 String filename = uploadFile.getOriginalFilename();
                 String leftPath = session.getServletContext().getRealPath("/file");
@@ -91,13 +95,19 @@ public class GradeController {
                 try {
                     uploadFile.transferTo(file);
                     grade.setFileName(filename);
-                    return gradeService.update(grade);
+                    String json = JSON.toJSONString(gradeService.update(grade));
+                    request.setAttribute("serverResponse",json);
+                    return "main/grade_find";
                 } catch (IOException e) {
                     e.printStackTrace();
-                    return ServerResponse.createError("提交失败！");
+                    String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                    request.setAttribute("serverResponse",json);
+                    return "main/grade_find";
                 }
             }
-            return gradeService.update(grade);
+            String json = JSON.toJSONString(gradeService.update(grade));
+            request.setAttribute("serverResponse",json);
+            return "main/grade_find";
     }
 
     @GetMapping("/grade/{id}")

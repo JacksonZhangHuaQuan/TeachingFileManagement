@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -31,10 +33,21 @@ public class TeachTaskController {
      * @param id
      * @return
      */
-    @DeleteMapping("/teachtask/{id}")
+    @PostMapping("/teachtaskdelete/{id}")
     @ResponseBody
-    public ServerResponse delete(@PathVariable Long id){
-        return teachTaskService.delete(id);
+    public ServerResponse delete(@PathVariable Long id, HttpSession session){
+        String fileName = teachTaskService.findById(id).getData().getFileName();
+        ServerResponse serverResponse = teachTaskService.delete(id);
+        if (serverResponse.isSuccess()){
+            if (fileName != ""){
+                String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
+                File file = new File(targetFile);
+                file.delete();
+            }
+
+        }
+
+        return serverResponse;
     }
 
     /**

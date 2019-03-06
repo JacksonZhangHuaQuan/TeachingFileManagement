@@ -61,16 +61,54 @@ public class PaperController {
         return "main/paper_add";
     }
 
-    @DeleteMapping("/paper/{id}")
+    @PostMapping("/paperdelete/{id}")
     @ResponseBody
-    public ServerResponse delete(@PathVariable("id") Long id){
-        return paperService.delete(id);
+    public ServerResponse delete(@PathVariable("id") Long id,HttpSession session){
+        String fileName = paperService.findById(id).getData().getFileName();
+        ServerResponse serverResponse = paperService.delete(id);
+        if (serverResponse.isSuccess()){
+            if (fileName != ""){
+                String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
+                File file = new File(targetFile);
+                file.delete();
+            }
+        }
+
+        return serverResponse;
     }
 
-    @PutMapping("/paper")
-    @ResponseBody
-    public ServerResponse update(@RequestBody Paper paper){
-        return paperService.update(paper);
+    @PostMapping("/paperupdate")
+    public String update( Paper paper,@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session,HttpServletRequest request){
+        if (paper.getFileName() == null){
+            paper.setFileName("");
+        }
+        if (uploadFile.getSize() > 0 ) {
+            String filename = uploadFile.getOriginalFilename();
+            String leftPath = session.getServletContext().getRealPath("/file");
+            File path =new File(leftPath);
+            if ( !path.exists() && path.isAbsolute() ){
+                path.mkdir();
+            }
+            File file = new File(leftPath, filename);
+            if ( file.exists() ){
+                file.delete();
+            }
+            try {
+                uploadFile.transferTo(file);
+                paper.setFileName(filename);
+                String json = JSON.toJSONString(paperService.update(paper));
+                request.setAttribute("serverResponse",json);
+                return "main/paper_find";
+            } catch (IOException e) {
+                e.printStackTrace();
+                String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                request.setAttribute("serverResponse",json);
+                return "main/paper_find";
+            }
+        }
+        String json = JSON.toJSONString(paperService.update(paper));
+        request.setAttribute("serverResponse",json);
+        return "main/paper_find";
     }
 
     @GetMapping("/paper/{id}")

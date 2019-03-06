@@ -72,10 +72,20 @@ public class StudentWorkController {
      * @param id
      * @return
      */
-    @DeleteMapping("/studentwork/{id}")
+    @PostMapping("/studentworkdelete/{id}")
     @ResponseBody
-    public ServerResponse delete(@PathVariable("id") Long id){
-        return studentWorkService.delete(id);
+    public ServerResponse delete(@PathVariable("id") Long id,HttpSession session){
+        String fileName = studentWorkService.findById(id).getData().getFileName();
+        ServerResponse serverResponse = studentWorkService.delete(id);
+        if (serverResponse.isSuccess()){
+            if (fileName != ""){
+                String targetFile = session.getServletContext().getRealPath("/file/"+fileName);
+                File file = new File(targetFile);
+                file.delete();
+            }
+        }
+
+        return serverResponse;
     }
 
     /**
@@ -83,10 +93,39 @@ public class StudentWorkController {
      * @param studentWork
      * @return
      */
-    @PutMapping("/studentwork")
+    @PostMapping("/studentworkupdate")
     @ResponseBody
-    public ServerResponse update(@RequestBody StudentWork studentWork){
-        return studentWorkService.update(studentWork);
+    public String update(StudentWork studentWork,@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session,HttpServletRequest request){
+        if (studentWork.getFileName() == null){
+            studentWork.setFileName("");
+        }
+        if (uploadFile.getSize() > 0 ) {
+            String filename = uploadFile.getOriginalFilename();
+            String leftPath = session.getServletContext().getRealPath("/file");
+            File path =new File(leftPath);
+            if ( !path.exists() && path.isAbsolute() ){
+                path.mkdir();
+            }
+            File file = new File(leftPath, filename);
+            if ( file.exists() ){
+                file.delete();
+            }
+            try {
+                uploadFile.transferTo(file);
+                studentWork.setFileName(filename);
+                String json = JSON.toJSONString(studentWorkService.update(studentWork));
+                request.setAttribute("serverResponse",json);
+                return "main/work_find";
+            } catch (IOException e) {
+                e.printStackTrace();
+                String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                request.setAttribute("serverResponse",json);
+                return "main/work_find";
+            }
+        }
+        String json = JSON.toJSONString(studentWorkService.update(studentWork));
+        request.setAttribute("serverResponse",json);
+        return "main/work_find";
     }
 
     /**

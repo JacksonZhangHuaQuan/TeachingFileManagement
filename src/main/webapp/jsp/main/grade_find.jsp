@@ -19,6 +19,8 @@
     <link href="${ctx}/assets/css/font-awesome.css" rel="stylesheet" />
     <!--CUSTOM BASIC STYLES-->
     <link href="${ctx}/assets/css/basic.css" rel="stylesheet" />
+    <!-- PAGE LEVEL STYLES -->
+    <link href="${ctx}/assets/css/bootstrap-fileupload.min.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="${ctx}/assets/css/custom.css" rel="stylesheet" />
     <!--弹出层-->
@@ -157,6 +159,14 @@
                 </div>
                 <!-- End  Kitchen Sink -->
             </div>
+
+
+
+
+
+
+
+
         </div>
     </div>
     <!-- /. PAGE WRAPPER  -->
@@ -166,6 +176,64 @@
 <div id="footer-sec">
     &copy; 2019.FileManagement.com
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 1000px;  height:550px; margin-left: -30%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">修改</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <form role="form" enctype="multipart/form-data" action="/gradeupdate" method="post">
+                        <input type="hidden" id="id" name="id">
+                        <input type="hidden" id="fileName" name="fileName">
+                        <div class="form-group">
+                            <label>学年</label>
+                            <input class="form-control" type="text" name="year" id="year">
+                            <p class="help-block">如：2019</p>
+                        </div>
+                        <div class="form-group">
+                            <label>学期</label>
+                            <select class="form-control" name="semester" id="semester">
+                                <option>上半年</option>
+                                <option>下半年</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>班级</label>
+                            <input class="form-control" type="text" name="teachClass" id="teachClass">
+                        </div>
+                        <div class="form-group">
+                            <label>课程</label>
+                            <input class="form-control" type="text" name="courseTitle" id="courseTitle">
+                        </div>
+                        <div class="form-group">
+                            <label >附件</label>
+                            <div class="">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+		                                             	<span class="btn btn-file btn-default">
+					                                    <span class="fileupload-new">选择文件</span>
+					                                    <span class="fileupload-exists">重新选择</span>
+					                                    <input type="file" name="uploadFile" id="uploadFile">
+                                						</span>
+                                    <span class="fileupload-preview"></span>
+                                    <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">提交</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /. FOOTER  -->
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
@@ -174,6 +242,8 @@
 <script src="${ctx}/assets/js/bootstrap.js"></script>
 <!-- METISMENU SCRIPTS -->
 <script src="${ctx}/assets/js/jquery.metisMenu.js"></script>
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="${ctx}/assets/js/bootstrap-fileupload.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="${ctx}/assets/js/custom.js"></script>
 <!-- 弹出层 -->
@@ -184,25 +254,7 @@
     var lastPage=1;
     var id = ${currentUser.id};
     var dataJson = {userId:id};
-    function deleted(id){
-       var staus = confirm("确定删除？");
-       if (!staus){
-           return false;
-       }
-       $.ajax({
-           type:"post",
-           url:'${ctx}/gradedelete/'+id,
-           async:false,
-           dataType:"json",
-           success: function (result) {
-             location.href = '${ctx}/jsp/main/grade_find.jsp';
-           },
-           error:function (result) {
-            console.log(result);
-           }
-       })
 
-    }
     $(function (){
         $.ajax({
             type:"post",
@@ -221,7 +273,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
-                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\"  onclick=\"findById("+data.id+")\">修改</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -233,7 +285,18 @@
             }
         });
 
-    })
+
+        <%--var server = ${serverResponse};--%>
+        <%--if (server.success === true ){--%>
+            <%--var txt= server.message;--%>
+            <%--window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.success);--%>
+            <%--console.log(server);--%>
+        <%--}--%>
+        <%--if (server.success === false){--%>
+            <%--var txt= server.message;--%>
+            <%--window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);--%>
+        <%--}--%>
+    });
     $("#goNext").click(function(){
         $.ajax({
             type:"post",
@@ -253,7 +316,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
-                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\"  onclick=\"findById("+data.id+")\">修改</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -264,7 +327,7 @@
                 $("#totalPage").html(result.data.pages);
             }
         });
-    })
+    });
 
 
     $("#goLast").click(function(){
@@ -287,7 +350,7 @@
                     str+="<td>"+data.teachClass+"</td>";
                     str+="<td>"+data.courseTitle+"</td>";
                     str+="<td><a href='${ctx}/file/"+data.fileName+"'>"+data.fileName+"</a></td>";
-                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button></td>";
+                    str+="<td><button type=\"button\" class=\"btn btn-sm btn-primary\" onclick=\"deleted("+data.id+")\">删除</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class=\"btn btn-primary btn-sm\" data-toggle=\"modal\" data-target=\"#myModal\"  onclick=\"findById("+data.id+")\">修改</button></td>";
                     str+="</tr>";
                     $("tbody").append(str);
                 });
@@ -301,7 +364,62 @@
                 console.log(result);
             }
         });
-    })
+    });
+
+    function deleted(id){
+        var staus = confirm("确定删除？");
+        if (!staus){
+            return false;
+        }
+        $.ajax({
+            type:"post",
+            url:'${ctx}/gradedelete/'+id,
+            async:false,
+            dataType:"json",
+            success: function (result) {
+                location.href = '${ctx}/jsp/main/grade_find.jsp';
+            },
+            error:function (result) {
+                console.log(result);
+            }
+        })
+
+    }
+
+    function findById(id){
+        $.ajax({
+            type:"get",
+            url:'${ctx}/grade/'+id,
+            async:false,
+            dataType:"json",
+            success: function (result) {
+                console.log(result);
+                $("#id").val(result.data.id);
+                $("#year").val(result.data.year);
+                $("#semester").val(result.data.semester);
+                $("#teachClass").val(result.data.teachClass);
+                $("#courseTitle").val(result.data.courseTitle);
+                $("#fileName").val(result.data.fileName);
+            },
+            error:function (result) {
+                console.log(result);
+            }
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
