@@ -8,6 +8,7 @@ import com.teacher.entity.UserInfo;
 import com.teacher.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,11 +34,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ServerResponse register(User user) {
+    @Transactional
+    public ServerResponse register(User user,UserInfo userInfo) {
         User userCheck = userMapper.findByUsername(user.getUsername());
         if (userCheck == null){
             int num = userMapper.addNormalUser(user);
             if (num > 0){
+                userInfo.setUserId(userMapper.findByUsername(user.getUsername()).getId());
+                userInfoMapper.add(userInfo);
                 return ServerResponse.createSuccessMessage("注册成功!");
             }
             return ServerResponse.createError("注册失败!");
@@ -55,6 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public ServerResponse addInfo(UserInfo userInfo) {
         int num = userInfoMapper.add(userInfo);
         if ( num > 0 ){
@@ -70,6 +75,15 @@ public class UserServiceImpl implements UserService {
             return ServerResponse.createSuccessMessage("更新成功！");
         }
         return ServerResponse.createError("更新失败！");
+    }
+
+    @Override
+    public ServerResponse<User> findByUsername(String username) {
+        User user = userMapper.findByUsername(username);
+        if (user != null){
+            return ServerResponse.createSuccess(user);
+        }
+        return ServerResponse.createError("未找到用户！");
     }
 
 

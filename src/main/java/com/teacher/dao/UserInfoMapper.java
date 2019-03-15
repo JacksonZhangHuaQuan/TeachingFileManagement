@@ -40,4 +40,11 @@ public interface UserInfoMapper {
      * @return UserInfo
      */
     UserInfo findByUserId(@Param("userId") Long userId);
+
+    /**
+     * 根据名字查询用户信息
+     * @param name
+     * @return
+     */
+    UserInfo findByName(@Param("teacherName") String teacherName);
 }

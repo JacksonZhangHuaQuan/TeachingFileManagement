@@ -18,6 +18,8 @@
     <link href="${ctx}/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="${ctx}/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- PAGE LEVEL STYLES -->
+    <link href="${ctx}/assets/css/bootstrap-fileupload.min.css" rel="stylesheet" />
     <!--CUSTOM BASIC STYLES-->
     <link href="${ctx}/assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
@@ -61,10 +63,10 @@
 
 
                 <li>
-                    <a class="active-menu" href="${ctx}/jsp/admin/index.jsp"><i class="fa fa-dashboard "></i>教师录入</a>
+                    <a  href="${ctx}/jsp/admin/index.jsp"><i class="fa fa-dashboard "></i>教师录入</a>
                 </li>
                 <li>
-                    <a href="${ctx}/jsp/admin/teachtask_add.jsp"><i class="fa fa-desktop "></i>教学任务录入</a>
+                    <a href="${ctx}/jsp/admin/teachtask_add.jsp" class="active-menu"><i class="fa fa-desktop "></i>教学任务录入</a>
                 </li>
 
             </ul>
@@ -79,54 +81,59 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        教师录入
+                        新增教学任务
                     </div>
                     <div class="panel-body">
-                        <form role="form" enctype="multipart/form-data" action="/register" method="post">
+                        <form role="form" enctype="multipart/form-data" action="/teachtask" method="post" name="serverResponse">
                             <div class="form-group">
-                                <label>用户名</label>
-                                <input class="form-control" type="text" name="username">
+                                <label>老师姓名</label>
+                                <input class="form-control" type="text" name="teacherName">
                             </div>
                             <div class="form-group">
-                                <label>密码</label>
-                                <input class="form-control" type="text" name="password">
+                                <label>课程名称</label>
+                                <input class="form-control" type="text" name="courseTitle">
                             </div>
                             <div class="form-group">
-                                <label>教师工号</label>
-                                <input class="form-control" type="text" name="jobNumber">
+                                <label>开始时间</label>
+                                <input class="form-control" type="date" name="timeBegin">
                             </div>
                             <div class="form-group">
-                                <label>姓名</label>
-                                <input class="form-control" type="text" name="name">
+                                <label>结束时间</label>
+                                <input class="form-control" type="date" name="timeEnd">
                             </div>
                             <div class="form-group">
-                                <label>性别</label>
-                                <select class="form-control" name="gender">
-                                    <option>男</option>
-                                    <option>女</option>
+                                <label>地点</label>
+                                <input class="form-control" type="text" name="location">
+                            </div>
+                            <div class="form-group">
+                                <label>星期/节数</label>
+                                <input class="form-control" type="text" name="classTime">
+                                <p class="help-block">如：周三/第一、二节</p>
+                            </div>
+                            <div class="form-group">
+                                <label>学分</label>
+                                <input class="form-control" type="text" name="credit">
+                            </div>
+                            <div class="form-group">
+                                <label>课程类型</label>
+                                <select class="form-control" name="courseType">
+                                    <option>选修</option>
+                                    <option>必修</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label>生日</label>
-                                <input class="form-control" type="date" name="birthday">
-                                <p class="help-block">如：1996-10-08</p>
-                            </div>
-                            <div class="form-group">
-                                <label>民族</label>
-                                <input class="form-control" type="text" name="nation">
-                            </div>
-                            <div class="form-group">
-                                <label>手机</label>
-                                <input class="form-control" type="text" name="mobilePhone">
-                            </div>
-                            <div class="form-group">
-                                <label>邮箱</label>
-                                <input class="form-control" type="text" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label>住址</label>
-                                <input class="form-control" type="text" name="address">
+                                <label >教学大纲</label>
+                                <div class="">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+		                                             	<span class="btn btn-file btn-default">
+					                                    <span class="fileupload-new">选择文件</span>
+					                                    <span class="fileupload-exists">重新选择</span>
+					                                    <input type="file" name="uploadFile">
+                                						</span>
+                                        <span class="fileupload-preview"></span>
+                                        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+                                    </div>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-info">提交</button>
@@ -156,6 +163,8 @@
 <script src="${ctx}/assets/js/jquery.metisMenu.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="${ctx}/assets/js/custom.js"></script>
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="${ctx}/assets/js/bootstrap-fileupload.js"></script>
 <!-- 弹出层 -->
 <script src="${ctx}/assets/js/xcConfirm.js"></script>
 <script>
@@ -171,8 +180,6 @@
             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
         }
     })
-
-
 </script>
 
 

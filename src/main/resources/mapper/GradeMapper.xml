@@ -20,7 +20,7 @@
         WHERE id=#{id}
     </select>
     <select id="findAll" resultType="Grade">
-        SELECT id,year,semester,teach_class,course_title,file_name,user_id
+        SELECT id,year,semester,teach_class,course_title4646464646464646464,file_name,user_id
         FROM grade
     </select>
     <select id="findByCondition" parameterType="Grade" resultType="Grade">

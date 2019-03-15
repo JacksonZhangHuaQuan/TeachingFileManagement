@@ -1,21 +1,31 @@
 package com.teacher.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.teacher.common.Const;
 import com.teacher.common.ServerResponse;
+import com.teacher.dao.UserInfoMapper;
 import com.teacher.entity.TeachTask;
+import com.teacher.entity.User;
 import com.teacher.service.TeachTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class TeachTaskController {
     @Autowired
     TeachTaskService teachTaskService;
+    @Autowired
+    UserInfoMapper userInfoMapper;
 
     /**
      * 增加教学任务
@@ -23,9 +33,38 @@ public class TeachTaskController {
      * @return
      */
     @PostMapping("/teachtask")
-    @ResponseBody
-    public ServerResponse add(@RequestBody TeachTask teachTask){
-        return teachTaskService.add(teachTask);
+    public String add(TeachTask teachTask, @RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session, HttpServletRequest request, String teacherName){
+        teachTask.setUserId(userInfoMapper.findByName(teacherName).getUserId());
+        if (teachTask.getFileName() == null){
+            teachTask.setFileName("");
+        }
+        if (uploadFile.getSize() > 0 ) {
+            String filename = uploadFile.getOriginalFilename();
+            String leftPath = session.getServletContext().getRealPath("/file");
+            File path =new File(leftPath);
+            if ( !path.exists() && path.isAbsolute() ){
+                path.mkdir();
+            }
+            File file = new File(leftPath, filename);
+            if ( file.exists() ){
+                file.delete();
+            }
+            try {
+                uploadFile.transferTo(file);
+                teachTask.setFileName(filename);
+                String json = JSON.toJSONString(teachTaskService.add(teachTask));
+                request.setAttribute("serverResponse",json);
+                return "admin/teachtask_add";
+            } catch (IOException e) {
+                e.printStackTrace();
+                String json = JSON.toJSONString(ServerResponse.createError("提交失败！"));
+                request.setAttribute("serverResponse",json);
+                return "admin/teachtask_add";
+            }
+        }
+        String json = JSON.toJSONString(teachTaskService.add(teachTask));
+        request.setAttribute("serverResponse",json);
+        return "admin/teachtask_add";
     }
 
     /**

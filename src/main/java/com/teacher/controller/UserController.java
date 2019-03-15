@@ -9,6 +9,7 @@ import com.teacher.entity.UserInfo;
 import com.teacher.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +29,15 @@ public class UserController {
     @PostMapping("/login")
     public String login( User user,HttpSession httpSession,HttpServletRequest request){
          ServerResponse<User> serverResponse = userService.login(user);
-         if (serverResponse.isSuccess()){
+         if (serverResponse.isSuccess() && serverResponse.getData().getType() == Const.UserType.TYPE_USER){
              httpSession.setAttribute(Const.CURRENT_INFO,userService.findInfoByUserId(serverResponse.getData().getId()).getData());
              httpSession.setAttribute(Const.CURRENT_USER,serverResponse.getData());
              return "main/index";
+         }
+         if (serverResponse.isSuccess() && serverResponse.getData().getType() == Const.UserType.TYPE_ADMIN){
+             httpSession.setAttribute(Const.CURRENT_INFO,userService.findInfoByUserId(serverResponse.getData().getId()).getData());
+             httpSession.setAttribute(Const.CURRENT_USER,serverResponse.getData());
+             return "admin/index";
          }
         String json = JSON.toJSONString(serverResponse);
         request.setAttribute("serverResponse",json);
@@ -52,12 +58,9 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    @ResponseBody
-    public ServerResponse register(@RequestBody User user){
-        if( Const.UserType.TYPE_ADMIN == user.getType()){
-            return userService.register(user);
-        }
-        return ServerResponse.createError("无权限！");
+    public String register(User user,UserInfo userInfo,HttpServletRequest request){
+        request.setAttribute("serverResponse",JSON.toJSONString(userService.register(user,userInfo)));
+        return "admin/index";
     }
 
 }

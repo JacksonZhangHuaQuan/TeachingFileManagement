@@ -94,7 +94,6 @@ public class StudentWorkController {
      * @return
      */
     @PostMapping("/studentworkupdate")
-    @ResponseBody
     public String update(StudentWork studentWork,@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session,HttpServletRequest request){
         if (studentWork.getFileName() == null){
             studentWork.setFileName("");

@@ -17,7 +17,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    ServerResponse register(User user);
+    ServerResponse register(User user,UserInfo userInfo);
 
     /**
      * 查询用户个人信息
@@ -39,4 +39,5 @@ public interface UserService {
      * @return
      */
     ServerResponse updateInfo(UserInfo userInfo);
+    ServerResponse<User> findByUsername(String username);
 }
